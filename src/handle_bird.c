@@ -15,7 +15,7 @@ bird_t *create_bird(char *filepath)
     b->texture = sfTexture_createFromFile("./images/bird.png", NULL);
     b->sprite = sfSprite_create();
     b->rect = (sfIntRect){0, 0, 110, 110};
-    b->pos = (sfVector2f){0, 200};
+    b->pos = (sfVector2f){0, 50};
     b->speed = 1;
 
     sfSprite_setTexture(b->sprite, b->texture, sfTrue);
@@ -33,11 +33,14 @@ void move_bird(bird_t *b)
 
 void animate_bird(bird_t *b, sfClock *clock)
 {
-    if (sfTime_asSeconds(sfClock_restart(clock)) > 0.1)
+    sfTime time = sfClock_getElapsedTime(clock);
+    if (sfTime_asSeconds(time) > 0.1f) {
         b->rect.left += 110;
-    if (b->rect.left >= 330)
-        b->rect.left = 0;
-    sfSprite_setTextureRect(b->sprite, b->rect);
+        if (b->rect.left >= 330)
+            b->rect.left = 0;
+        sfSprite_setTextureRect(b->sprite, b->rect);
+        sfClock_restart(clock);
+    }
 }
 
 

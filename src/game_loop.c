@@ -25,7 +25,7 @@ void game_loop(sfRenderWindow *window)
     sfTexture *bg_texture = sfTexture_createFromFile("./images/bg.png", NULL);
     sfSprite *bg_sprite = sfSprite_create();
     sfSprite_setTexture(bg_sprite, bg_texture, sfTrue);
-    sfRenderWindow_setFramerateLimit(window, 70);
+    sfRenderWindow_setFramerateLimit(window, 300);
 
     while(sfRenderWindow_isOpen(window)) {
         handle_events(window);

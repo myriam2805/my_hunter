@@ -8,7 +8,7 @@
 
 sfRenderWindow *create_window(void)
 {
-    sfVideoMode mode = {800, 600, 32};
+    sfVideoMode mode = {550, 300, 32};
 
     sfRenderWindow *window = sfRenderWindow_create(
         mode, "My Hunter", sfResize | sfClose, NULL);
