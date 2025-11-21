@@ -4,5 +4,4 @@ temp/
 *.a
 *.log
 *.swp
-main.o
 test
