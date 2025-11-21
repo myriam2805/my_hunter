@@ -15,6 +15,8 @@ SRC = src/window.c \
 	src/sound.c \
 	src/music.c \
 	src/score.c \
+	utils/my_strcmp.c \
+	utils/my_putstr.c \
 	main.c
 
 OBJ = $(SRC:.c=.o)

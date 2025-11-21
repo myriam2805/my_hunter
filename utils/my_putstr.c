@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2025
-** my_putstr
+** my_putstr.c
 ** File description:
 ** A function that prints strings.
 */

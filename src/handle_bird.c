@@ -5,6 +5,8 @@
 ** A function that handle the bird.
 */
 #include <SFML/Graphics.h>
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/Graphics/Types.h>
 #include <stdlib.h>
 #include "my.h"
 
@@ -17,7 +19,6 @@ bird_t *create_bird(char *filepath)
     b->rect = (sfIntRect){0, 0, 110, 110};
     b->pos = (sfVector2f){0, 50};
     b->speed = 1;
-
     sfSprite_setTexture(b->sprite, b->texture, sfTrue);
     sfSprite_setTextureRect(b->sprite, b->rect);
     return b;
@@ -34,6 +35,7 @@ void move_bird(bird_t *b)
 void animate_bird(bird_t *b, sfClock *clock)
 {
     sfTime time = sfClock_getElapsedTime(clock);
+
     if (sfTime_asSeconds(time) > 0.1f) {
         b->rect.left += 110;
         if (b->rect.left >= 330)
@@ -42,5 +44,3 @@ void animate_bird(bird_t *b, sfClock *clock)
         sfClock_restart(clock);
     }
 }
-
-

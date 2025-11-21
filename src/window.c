@@ -5,7 +5,6 @@
 ** A function that open a window and displays an image.
 */
 #include "my.h"
-#include <math.h>
 
 sfRenderWindow *create_window(void)
 {
@@ -13,5 +12,6 @@ sfRenderWindow *create_window(void)
     sfRenderWindow *window = sfRenderWindow_create(
     mode, "My Hunter", sfResize | sfClose, NULL);
 
+    sfRenderWindow_setFramerateLimit(window, 300);
     return window;
 }

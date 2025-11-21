@@ -14,26 +14,34 @@ int click_on_start(sfVector2i m)
     return 0;
 }
 
+static int handle_menu_event(sfEvent *e, sfRenderWindow *win)
+{
+    if (e->type == sfEvtClosed) {
+        sfRenderWindow_close(win);
+        return 0;
+    }
+    if (e->type == sfEvtMouseButtonPressed
+        && e->mouseButton.button == sfMouseLeft) {
+        if (click_on_start(sfMouse_getPositionRenderWindow(win)))
+            return 1;
+    }
+    return 0;
+}
+
 int menu_loop(sfRenderWindow *win)
 {
     sfTexture *t = sfTexture_createFromFile("./images/menu.png", NULL);
     sfSprite *bg = sfSprite_create();
     sfEvent e;
-    sfVector2f scale = {2, 2};
+    sfVector2f scale = (sfVector2f){2, 2};
+    int result = 0;
+
     sfSprite_setTexture(bg, t, sfTrue);
     sfSprite_setScale(bg, scale);
-
-    while (sfRenderWindow_isOpen(win)) {
+    while (sfRenderWindow_isOpen(win) && result == 0) {
         while (sfRenderWindow_pollEvent(win, &e)) {
-            if (e.type == sfEvtClosed)
-                sfRenderWindow_close(win);
-
-            if (e.type == sfEvtMouseButtonPressed && e.mouseButton.button == sfMouseLeft
-                && click_on_start(sfMouse_getPositionRenderWindow(win))) {
-                return 1;
-            }
+            result = handle_menu_event(&e, win);
         }
-
         sfRenderWindow_clear(win, sfBlack);
         sfRenderWindow_drawSprite(win, bg, NULL);
         sfRenderWindow_display(win);
