@@ -31,5 +31,8 @@ sfMusic *load_music(char *filepath);
 int my_putstr(char const *str);
 int click_on_start(sfVector2i m);
 void draw(sfRenderWindow *w, bird_t *b, sfSprite *bg);
+sfText *init_score(sfFont *font);
+void display_score(sfRenderWindow *win, sfText *text);
+void check_bird_click(sfVector2i mouse, bird_t *b, sfSound *sound);
 
 #endif

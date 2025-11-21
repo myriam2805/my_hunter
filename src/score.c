@@ -22,26 +22,32 @@ sfText *init_score(sfFont *font)
 
 void display_score(sfRenderWindow *win, sfText *text)
 {
-    char str[50];
+    char str[50] = "Score : ";
+    int len = 8;
     int tmp = score;
+    char num[12];
     int i = 0;
 
-    str[0] = 'S'; str[1] = 'c'; str[2] = 'o'; str[3] = 'r'; str[4] = 'e'; str[5] = ' '; str[6] = ':'; str[7] = ' '; i = 8;
     if (tmp == 0)
-        str[i++] = '0';
+        num[i++] = '0';
     while (tmp > 0) {
-        str[i++] = '0' + tmp % 10;
+        num[i++] = (tmp % 10) + '0';
         tmp /= 10;
     }
-    str[i] = '\0';
+    for (int j = i - 1; j >= 0; j--)
+        str[len++] = num[j];
+    str[len] = '\0';
+
     sfText_setString(text, str);
     sfRenderWindow_drawText(win, text, NULL);
 }
 
-void check_bird_click(sfVector2i mouse, bird_t *b)
+void check_bird_click(sfVector2i mouse, bird_t *b, sfSound *sound)
 {
     sfFloatRect bounds = sfSprite_getGlobalBounds(b->sprite);
+
     if (sfFloatRect_contains(&bounds, (float)mouse.x, (float)mouse.y)) {
+        sfSound_play(sound);
         score++;
         b->pos.x = -110;
         sfSprite_setPosition(b->sprite, b->pos);

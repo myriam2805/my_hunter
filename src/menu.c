@@ -9,7 +9,7 @@
 
 int click_on_start(sfVector2i m)
 {
-    if (m.x >= 259 && m.x <= 291 && m.y >= 134 && m.y <= 166)
+    if (m.x >= 518 && m.x <= 582 && m.y >= 268 && m.y <= 332)
         return 1;
     return 0;
 }
@@ -19,8 +19,9 @@ int menu_loop(sfRenderWindow *win)
     sfTexture *t = sfTexture_createFromFile("./images/menu.png", NULL);
     sfSprite *bg = sfSprite_create();
     sfEvent e;
-
+    sfVector2f scale = {2, 2};
     sfSprite_setTexture(bg, t, sfTrue);
+    sfSprite_setScale(bg, scale);
 
     while (sfRenderWindow_isOpen(win)) {
         while (sfRenderWindow_pollEvent(win, &e)) {

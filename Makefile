@@ -14,6 +14,7 @@ SRC = src/window.c \
 	src/handle_bird.c \
 	src/sound.c \
 	src/music.c \
+	src/score.c \
 	main.c
 
 OBJ = $(SRC:.c=.o)

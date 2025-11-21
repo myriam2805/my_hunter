@@ -11,6 +11,10 @@
 sfSound *load_sound(char *filepath)
 {
     sfSoundBuffer *buf = sfSoundBuffer_createFromFile(filepath);
+
+    if (!buf)
+        return NULL;
+
     sfSound *sound = sfSound_create();
     sfSound_setBuffer(sound, buf);
     return sound;
