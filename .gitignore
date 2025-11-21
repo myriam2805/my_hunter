@@ -1,0 +1,7 @@
+*.o
+*.out
+temp/
+*.a
+*.log
+*.swp
+test

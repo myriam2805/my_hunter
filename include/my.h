@@ -36,7 +36,6 @@ void display_score(sfRenderWindow *win, sfText *text, int score);
 void check_bird_click(sfVector2i mouse, bird_t *b, sfSound *sound, int *score);
 void maj_score(sfRenderWindow* win, sfText *text, char *str, int len);
 int my_strcmp(char *a, char *b);
-static int handle_menu_event(sfEvent *e, sfRenderWindow *win);
 void cleanup_audio(sfSound *hit_sound, sfMusic *music);
 
 #endif
