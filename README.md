@@ -68,6 +68,6 @@ make re
 
 ---
 
-## Authors
+## Author
 
 > Built with ❤️ as part of the Epitech curriculum.
