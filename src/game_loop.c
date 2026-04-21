@@ -50,7 +50,7 @@ static void handle_events2(sfRenderWindow *window, bird_t *bird,
         }
         if (e.type == sfEvtMouseButtonPressed
             && e.mouseButton.button == sfMouseLeft) {
-                check_bird_click(mouse, bird, hit_sound, score);
+            check_bird_click(mouse, bird, hit_sound, score);
         }
     }
 }
